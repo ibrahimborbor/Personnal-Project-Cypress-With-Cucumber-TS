@@ -1,0 +1,119 @@
+name: Cypress CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Java (for Allure CLI)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clean report folders
+        run: |
+          npm run report:clean
+          npm run allure:clean
+
+      - name: Run smoke tests
+        run: npm run cy:run:smoke
+
+      - name: Generate Cucumber HTML report
+        if: always()
+        run: npm run report:generate
+
+      - name: Generate Allure report
+        if: always()
+        run: npm run allure:generate
+
+      - name: Upload smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-artifacts
+          if-no-files-found: warn
+          path: |
+            cypress/reports/cucumber-json/**
+            cypress/reports/cucumber-html/**
+            cypress/reports/allure-results/**
+            cypress/reports/allure-report/**
+            cypress/reports/videos/**
+            cypress/reports/screenshots/**
+
+  full:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Java (for Allure CLI)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clean report folders
+        run: |
+          npm run report:clean
+          npm run allure:clean
+
+      - name: Run full suite
+        run: npm run cy:run:full
+
+      - name: Generate Cucumber HTML report
+        if: always()
+        run: npm run report:generate
+
+      - name: Generate Allure report
+        if: always()
+        run: npm run allure:generate
+
+      - name: Upload full-run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-artifacts
+          if-no-files-found: warn
+          path: |
+            cypress/reports/cucumber-json/**
+            cypress/reports/cucumber-html/**
+            cypress/reports/allure-results/**
+            cypress/reports/allure-report/**
+            cypress/reports/videos/**
+            cypress/reports/screenshots/**

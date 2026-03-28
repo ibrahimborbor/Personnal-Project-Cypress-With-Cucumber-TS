@@ -1,9 +1,10 @@
-@dashboard @smoke
+@dashboard
 Feature: OrangeHRM dashboard module
   As a logged-in user
   I want to validate dashboard shell, user area, and widgets
   So I know core dashboard functionality is healthy
 
+  @smoke
   Scenario: Dashboard shell renders after login
     Given I login and open dashboard shell checks
     Then I should be on the dashboard route for shell checks
@@ -12,6 +13,7 @@ Feature: OrangeHRM dashboard module
     And I should see dashboard left menu active state
     And I should see the side menu search input
 
+  @ui
   Scenario: User area controls are visible
     Given I login and open dashboard user-area checks
     Then I should be on the dashboard route for user-area checks
@@ -20,6 +22,7 @@ Feature: OrangeHRM dashboard module
     And I should see the help icon button
     And I should see the upgrade button
 
+  @ui
   Scenario: Core dashboard widgets are visible
     Given I login and open dashboard widget checks
     Then I should be on the dashboard route for widget checks

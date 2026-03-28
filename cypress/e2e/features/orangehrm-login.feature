@@ -1,4 +1,4 @@
-@auth @ui @smoke @validation @footer @negative
+@login
 Feature: OrangeHRM login module
   As a QA learner
   I want to validate OrangeHRM login flows and UI states
