@@ -7,6 +7,32 @@
 
 Simple UI automation framework built with Cypress, Cucumber (BDD), and TypeScript.
 
+## Quick Start
+
+```bash
+npm install
+npm run cy:run
+npm run test:allure
+```
+
+Then open the Allure report:
+
+```bash
+npm run allure:open
+```
+
+## Demo Preview
+
+You can add a project preview image or gif here after your first run.
+
+Example:
+
+```markdown
+![Framework Demo](docs/demo.gif)
+```
+
+Tip: create a `docs/` folder and place screenshots/gifs there for your README.
+
 ## What this project covers
 
 - Login module scenarios
@@ -118,3 +144,11 @@ Suggested pre-push checks:
 npm run cy:run
 npm run test:allure
 ```
+
+## Future Improvements
+
+- Add API test coverage for core OrangeHRM endpoints.
+- Add cross-browser runs (Chrome + Firefox) in CI.
+- Add data-driven scenarios for multiple user roles.
+- Add test tagging strategy for smoke/regression/nightly pipelines.
+- Add GitHub Actions workflow for automated test and report publishing.
