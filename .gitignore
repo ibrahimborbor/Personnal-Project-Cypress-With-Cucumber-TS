@@ -1,0 +1,27 @@
+node_modules/
+.cypress-cache/
+cypress/screenshots/
+cypress/videos/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+
+# Cypress report artifacts (generated)
+cypress/reports/allure-results/
+cypress/reports/allure-report/
+cypress/reports/cucumber-json/
+cypress/reports/cucumber-html/
+
+# Keep report generator script tracked
+!cypress/reports/generate-cucumber-report.js
+
+# OS files
+.DS_Store
+Thumbs.db
