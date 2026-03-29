@@ -24,8 +24,8 @@ const timestamp = buildTimestamp();
 const reportPath = path.join(reportsRoot, timestamp);
 
 if (!fs.existsSync(jsonDir)) {
-  console.error(`Cucumber JSON directory not found: ${jsonDir}`);
-  process.exit(1);
+  console.warn(`Cucumber JSON directory not found: ${jsonDir}`);
+  process.exit(0);
 }
 
 const jsonFiles = fs
@@ -33,8 +33,8 @@ const jsonFiles = fs
   .filter((file) => file.toLowerCase().endsWith(".json"));
 
 if (jsonFiles.length === 0) {
-  console.error(`No Cucumber JSON files found in: ${jsonDir}`);
-  process.exit(1);
+  console.warn(`No Cucumber JSON files found in: ${jsonDir}`);
+  process.exit(0);
 }
 
 report.generate({

@@ -29,6 +29,8 @@
     "stepDefinitions": [
       "cypress/e2e/step_definitions/**/*.ts"
     ],
+    "filterSpecs": true,
+    "omitFiltered": true,
     "json": {
       "enabled": true,
       "output": "cypress/reports/cucumber-json/cucumber-report.json"
@@ -41,6 +43,7 @@
     "allure-commandline": "^2.38.1",
     "allure-cypress": "^3.6.0",
     "cypress": "^15.13.0",
+    "cypress-on-fix": "^1.1.0",
     "esbuild": "^0.27.4",
     "multiple-cucumber-html-reporter": "^3.10.0",
     "typescript": "^5.9.3"

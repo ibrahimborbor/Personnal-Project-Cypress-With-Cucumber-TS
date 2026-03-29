@@ -3,6 +3,7 @@ import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
 import { allureCypress } from "allure-cypress/reporter";
+import cypressOnFix from "cypress-on-fix";
 
 export default defineConfig({
   e2e: {
@@ -10,13 +11,15 @@ export default defineConfig({
     specPattern: "cypress/e2e/features/**/*.feature",
     supportFile: "cypress/support/e2e.ts",
     async setupNodeEvents(on, config) {
-      await addCucumberPreprocessorPlugin(on, config);
+      const onFixed = cypressOnFix(on);
 
-      allureCypress(on, config, {
+      await addCucumberPreprocessorPlugin(onFixed, config);
+
+      allureCypress(onFixed, config, {
         resultsDir: "cypress/reports/allure-results",
       });
 
-      on(
+      onFixed(
         "file:preprocessor",
         createBundler({
           plugins: [createEsbuildPlugin(config)],

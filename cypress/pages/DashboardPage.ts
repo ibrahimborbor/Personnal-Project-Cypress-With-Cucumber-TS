@@ -44,7 +44,8 @@ export class DashboardPage {
   assertUserNameIsNotEmpty(): void {
     cy.get(this.selectors.userDropdownName)
       .invoke("text")
-      .then((name) => {
+      .then((
+        name) => {
         expect(name.trim().length).to.be.greaterThan(0);
       });
   }
