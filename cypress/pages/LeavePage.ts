@@ -1,17 +1,24 @@
 export class LeavePage {
   private readonly selectors = {
+    // Menu and page title anchors
     activeMenuItem: ".oxd-main-menu-item.active",
     leaveListTitle: "h5.oxd-table-filter-title",
-    dateInputs: ".oxd-date-input input[placeholder='yyyy-dd-mm']",
+
+    // Leave list filter controls
+    dateInputs: ".oxd-date-input input.oxd-input",
     leaveStatusMultiselect: ".oxd-multiselect-wrapper .oxd-select-text",
     leaveStatusChip: ".oxd-multiselect-chips-selected",
     leaveTypeDropdown: ".oxd-select-wrapper .oxd-select-text",
     employeeNameInput: ".oxd-autocomplete-wrapper input[placeholder='Type for hints...']",
     includePastEmployeesText: ".orangehrm-leave-filter-text",
     includePastEmployeesSwitch: ".oxd-switch-wrapper",
+
+    // Filter action area
     resetButton: ".oxd-form-actions button[type='reset']",
     searchButton: ".oxd-form-actions button[type='submit']",
     requiredHint: ".orangehrm-form-hint",
+
+    // Result table shell and row action menu
     recordsFoundText: ".orangehrm-header-container .oxd-text",
     tableHeader: ".oxd-table-header",
     tableCard: ".oxd-table-card",

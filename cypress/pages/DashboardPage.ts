@@ -1,15 +1,28 @@
 export class DashboardPage {
   private readonly selectors = {
+    // Global dashboard shell regions
     sidePanel: ".oxd-sidepanel",
     sidePanelSearch: ".oxd-main-menu-search input[placeholder='Search']",
     activeMenuItem: ".oxd-main-menu-item.active",
+
+    // Left menu links for module navigation
     adminMenuItem: "ul.oxd-main-menu a.oxd-main-menu-item[href='/web/index.php/admin/viewAdminModule']",
     pimMenuItem: ".oxd-main-menu-item[href='/web/index.php/pim/viewPimModule']",
     leaveMenuItem: ".oxd-main-menu-item[href='/web/index.php/leave/viewLeaveModule']",
+    timeMenuItem: ".oxd-main-menu-item[href='/web/index.php/time/viewTimeModule']",
+    recruitmentMenuItem: ".oxd-main-menu-item[href='/web/index.php/recruitment/viewRecruitmentModule']",
+    myInfoMenuItem: ".oxd-main-menu-item[href='/web/index.php/pim/viewMyDetails']",
+    performanceMenuItem: ".oxd-main-menu-item[href='/web/index.php/performance/viewPerformanceModule']",
+    directoryMenuItem: ".oxd-main-menu-item[href='/web/index.php/directory/viewDirectory']",
+    claimMenuItem: ".oxd-main-menu-item[href='/web/index.php/claim/viewClaimModule']",
+
+    // Top bar controls and user context
     topBar: ".oxd-topbar",
     helpButton: "button[title='Help']",
     upgradeButton: ".orangehrm-upgrade-button",
     userDropdownName: ".oxd-userdropdown-name",
+
+    // Dashboard widgets/cards
     dashboardGrid: ".orangehrm-dashboard-grid",
     quickLaunchCard: ".orangehrm-quick-launch-card",
     buzzPostCard: ".orangehrm-buzz-widget-card",
@@ -84,6 +97,30 @@ export class DashboardPage {
 
   clickLeaveTab(): void {
     cy.get(this.selectors.leaveMenuItem).contains("Leave").click();
+  }
+
+  clickTimeTab(): void {
+    cy.get(this.selectors.timeMenuItem).contains("Time").click();
+  }
+
+  clickRecruitmentTab(): void {
+    cy.get(this.selectors.recruitmentMenuItem).contains("Recruitment").click();
+  }
+
+  clickMyInfoTab(): void {
+    cy.get(this.selectors.myInfoMenuItem).contains("My Info").click();
+  }
+
+  clickPerformanceTab(): void {
+    cy.get(this.selectors.performanceMenuItem).contains("Performance").click();
+  }
+
+  clickDirectoryTab(): void {
+    cy.get(this.selectors.directoryMenuItem).contains("Directory").click();
+  }
+
+  clickClaimTab(): void {
+    cy.get(this.selectors.claimMenuItem).contains("Claim").click();
   }
 }
 

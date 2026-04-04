@@ -1,3 +1,10 @@
+/// <reference types="cypress" />
+
+declare const cy: any;
+declare const Cypress: {
+  env: (name: string) => string | undefined;
+};
+
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { dashboardPage } from "../../pages/DashboardPage";
 import { loginPage } from "../../pages/LoginPage";
@@ -20,13 +27,9 @@ const loginWithDemoAdmin = (): void => {
   });
 };
 
-Given("I login and open pim navigation checks", () => {
-  loginWithDemoAdmin();
-  dashboardPage.assertOnDashboardRoute();
-});
-
-When("I click the PIM side menu tab", () => {
+When("I open the PIM module", () => {
   dashboardPage.clickPimTab();
+  pimPage.assertOnPimRoute();
 });
 
 Then("I should be on the PIM module route", () => {
@@ -39,16 +42,6 @@ Then("I should see the PIM top breadcrumb", () => {
 
 Then("the PIM side menu item should be active", () => {
   pimPage.assertPimMenuActive();
-});
-
-Given("I login and open pim employee information checks", () => {
-  loginWithDemoAdmin();
-  dashboardPage.assertOnDashboardRoute();
-});
-
-When("I click the PIM side menu tab for employee information checks", () => {
-  dashboardPage.clickPimTab();
-  pimPage.assertOnPimRoute();
 });
 
 Then("I should see the Employee Information title", () => {

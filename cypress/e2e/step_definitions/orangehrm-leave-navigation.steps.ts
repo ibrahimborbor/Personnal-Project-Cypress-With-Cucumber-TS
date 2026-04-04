@@ -20,13 +20,9 @@ const loginWithDemoAdmin = (): void => {
   });
 };
 
-Given("I login and open leave navigation checks", () => {
-  loginWithDemoAdmin();
-  dashboardPage.assertOnDashboardRoute();
-});
-
-When("I click the Leave side menu tab", () => {
+When("I open the Leave module", () => {
   dashboardPage.clickLeaveTab();
+  leavePage.assertOnLeaveRoute();
 });
 
 Then("I should be on the Leave module route", () => {
@@ -39,16 +35,6 @@ Then("I should see the Leave top breadcrumb", () => {
 
 Then("the Leave side menu item should be active", () => {
   leavePage.assertLeaveMenuActive();
-});
-
-Given("I login and open leave list checks", () => {
-  loginWithDemoAdmin();
-  dashboardPage.assertOnDashboardRoute();
-});
-
-When("I click the Leave side menu tab for leave list checks", () => {
-  dashboardPage.clickLeaveTab();
-  leavePage.assertOnLeaveRoute();
 });
 
 Then("I should see the Leave List title", () => {

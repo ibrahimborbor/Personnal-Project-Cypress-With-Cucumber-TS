@@ -1,13 +1,20 @@
 export class PimPage {
   private readonly selectors = {
+    // Menu/title anchors for Employee List page
     activeMenuItem: ".oxd-main-menu-item.active",
     employeeInfoTitle: "h5.oxd-table-filter-title",
+
+    // PIM filter controls
     employeeNameInput: ".oxd-autocomplete-wrapper input[placeholder='Type for hints...']",
     employeeIdInput: ".oxd-form .oxd-input",
     selectInputs: ".oxd-form .oxd-select-text",
+
+    // Filter actions and primary page action
     resetButton: ".oxd-form-actions button[type='reset']",
     searchButton: ".oxd-form-actions button[type='submit']",
     addButton: ".orangehrm-header-container button",
+
+    // Employee list table shell and row actions
     recordsFoundText: ".orangehrm-horizontal-padding .oxd-text",
     tableHeader: ".oxd-table-header",
     tableCard: ".oxd-table-card",

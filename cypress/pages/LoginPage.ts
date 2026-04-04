@@ -1,16 +1,23 @@
 export class LoginPage {
   private readonly selectors = {
+    // Login page structure
     layout: ".orangehrm-login-layout",
     slot: ".orangehrm-login-slot",
     heading: "h5",
+
+    // Authentication form fields/actions
     usernameInput: "input[name='username']",
     passwordInput: "input[name='password']",
     loginButton: "button[type='submit']",
     csrfToken: "input[name='_token'][type='hidden']",
+
+    // Informational blocks on login page
     demoCredentials: ".orangehrm-demo-credentials",
     forgotPassword: ".orangehrm-login-forgot-header",
     brandingImage: "img[alt='company-branding']",
     logoImage: "img[alt='orangehrm-logo']",
+
+    // Validation and footer sections
     validationError: "span.oxd-input-field-error-message",
     invalidCredentials: "p",
     socialLink: ".orangehrm-login-footer-sm a",
@@ -54,7 +61,7 @@ export class LoginPage {
   }
 
   assertForgotPasswordVisible(): void {
-    cy.contains(this.selectors.forgotPassword, "Forgot your password?").should(
+    cy.contains(this.selectors.forgotPassword, /forgot\s+your\s+password\??/i).should(
       "be.visible",
     );
   }
