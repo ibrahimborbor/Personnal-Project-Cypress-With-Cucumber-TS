@@ -40,6 +40,12 @@ Tip: create a `docs/` folder and place screenshots/gifs there for your README.
 - Admin module scenarios
 - PIM module scenarios
 - Leave module scenarios
+- Time module scenarios
+- Recruitment module scenarios
+- My Info module scenarios
+- Performance module scenarios
+- Directory module scenarios
+- Claim module scenarios
 
 ## Tech stack
 
@@ -55,11 +61,19 @@ cypress/
   e2e/
     features/           # Gherkin feature files
     step_definitions/   # Step implementations
+      orangehrm-common-dashboard.steps.ts  # Shared dashboard login step
   pages/                # Page Object Model classes
   reports/              # Generated reports
 cypress.config.ts
 package.json
 ```
+
+## Framework design
+
+- BDD scenarios are written in feature files and mapped to TypeScript step definitions.
+- Page Object Model classes keep selectors and UI actions/assertions reusable and centralized.
+- Shared login setup is centralized through a common step and reused with `Background` blocks in module feature files.
+- Dynamic UI sections use stable selectors and visibility checks to reduce flaky test failures.
 
 ## Prerequisites
 
@@ -136,6 +150,14 @@ Report output:
 
 - `.gitignore` excludes generated report artifacts and local cache files.
 - Use your own test credentials through environment variables when needed.
+
+## Recent updates
+
+- Added coverage for My Info, Performance, Directory, and Claim modules.
+- Added Admin end-to-end scenarios for search, add user, and delete user flows.
+- Refactored module feature files to use shared dashboard login setup.
+- Introduced a common dashboard login step definition to avoid duplicate step matches.
+- Hardened selectors and assertions for dynamic OrangeHRM UI elements.
 
 ## CI/CD
 
